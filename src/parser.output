@@ -1,0 +1,1722 @@
+Terminals unused in grammar
+
+   COMENTARIO
+
+
+Estado 8 conflitos: 4 reduce/reduce
+
+
+Gramática
+
+    0 $accept: program $end
+
+    1 program: cmd_list
+
+    2 cmd_list: cmd
+    3         | cmd cmd_list
+    4         | %empty
+
+    5 elseif: ELSEIF expr cmd_list
+    6       | ELSEIF expr cmd_list elseif
+
+    7 cmd: VARIAVEL IGUAL expr PTVIRG
+    8    | IF expr cmd_list END
+    9    | IF expr cmd_list ELSE cmd_list END
+   10    | IF expr cmd_list elseif END
+   11    | IF expr cmd_list elseif ELSE cmd_list END
+   12    | WHILE expr cmd_list END
+   13    | FOR expr DOISPONTOS expr cmd_list END
+   14    | DISP PARENTESQ expr PARENTDIR PTVIRG
+
+   15 expr: INT
+   16     | INPUT
+   17     | FALSO
+   18     | VERDADE
+   19     | VARIAVEL
+   20     | PARENTESQ expr PARENTDIR
+   21     | expr MAIS expr
+   22     | expr MENOS expr
+   23     | expr MULT expr
+   24     | expr DIV expr
+   25     | expr MAIOR expr
+   26     | expr MENOR expr
+   27     | expr MENOR_IGUAL expr
+   28     | expr MAIOR_IGUAL expr
+   29     | expr IGUAL_IGUAL expr
+   30     | expr IGUAL expr
+   31     | expr DIFERENTE expr
+
+
+Terminais, com as regras aonde aparecem
+
+$end (0) 0
+error (256)
+INT (258) 15
+VARIAVEL (259) 7 19
+PTVIRG (260) 7 14
+DOISPONTOS (261) 13
+COMENTARIO (262)
+PARENTESQ (263) 14 20
+PARENTDIR (264) 14 20
+MAIS (265) 21
+MENOS (266) 22
+MULT (267) 23
+DIV (268) 24
+VERDADE (269) 18
+FALSO (270) 17
+MAIOR (271) 25
+MENOR (272) 26
+MENOR_IGUAL (273) 27
+MAIOR_IGUAL (274) 28
+IGUAL_IGUAL (275) 29
+DIFERENTE (276) 31
+IGUAL (277) 7 30
+IF (278) 8 9 10 11
+ELSEIF (279) 5 6
+ELSE (280) 9 11
+END (281) 8 9 10 11 12 13
+FOR (282) 13
+WHILE (283) 12
+DISP (284) 14
+INPUT (285) 16
+
+
+Não-terminais, com as regras aonde aparecem
+
+$accept (31)
+    à esquerda: 0
+program (32)
+    à esquerda: 1, à direita: 0
+cmd_list (33)
+    à esquerda: 2 3 4, à direita: 1 3 5 6 8 9 10 11 12 13
+elseif (34)
+    à esquerda: 5 6, à direita: 6 10 11
+cmd (35)
+    à esquerda: 7 8 9 10 11 12 13 14, à direita: 2 3
+expr (36)
+    à esquerda: 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31,
+    à direita: 5 6 7 8 9 10 11 12 13 14 20 21 22 23 24 25 26 27 28
+    29 30 31
+
+
+Estado0
+
+    0 $accept: . program $end
+    1 program: . cmd_list
+    2 cmd_list: . cmd
+    3         | . cmd cmd_list
+    4         | . %empty  [$end]
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+   10    | . IF expr cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   12    | . WHILE expr cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+
+    VARIAVEL  fazer shift, e ir para o estado 1
+    IF        fazer shift, e ir para o estado 2
+    FOR       fazer shift, e ir para o estado 3
+    WHILE     fazer shift, e ir para o estado 4
+    DISP      fazer shift, e ir para o estado 5
+
+    $default  reduzir usando a regra 4 (cmd_list)
+
+    program   ir para o estado 6
+    cmd_list  ir para o estado 7
+    cmd       ir para o estado 8
+
+
+Estado1
+
+    7 cmd: VARIAVEL . IGUAL expr PTVIRG
+
+    IGUAL  fazer shift, e ir para o estado 9
+
+
+Estado2
+
+    8 cmd: IF . expr cmd_list END
+    9    | IF . expr cmd_list ELSE cmd_list END
+   10    | IF . expr cmd_list elseif END
+   11    | IF . expr cmd_list elseif ELSE cmd_list END
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 16
+
+
+Estado3
+
+   13 cmd: FOR . expr DOISPONTOS expr cmd_list END
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 17
+
+
+Estado4
+
+   12 cmd: WHILE . expr cmd_list END
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 18
+
+
+Estado5
+
+   14 cmd: DISP . PARENTESQ expr PARENTDIR PTVIRG
+
+    PARENTESQ  fazer shift, e ir para o estado 19
+
+
+Estado6
+
+    0 $accept: program . $end
+
+    $end  fazer shift, e ir para o estado 20
+
+
+Estado7
+
+    1 program: cmd_list .
+
+    $default  reduzir usando a regra 1 (program)
+
+
+Estado8
+
+    2 cmd_list: . cmd
+    2         | cmd .  [$end, ELSEIF, ELSE, END]
+    3         | . cmd cmd_list
+    3         | cmd . cmd_list
+    4         | . %empty  [$end, ELSEIF, ELSE, END]
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+   10    | . IF expr cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   12    | . WHILE expr cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+
+    VARIAVEL  fazer shift, e ir para o estado 1
+    IF        fazer shift, e ir para o estado 2
+    FOR       fazer shift, e ir para o estado 3
+    WHILE     fazer shift, e ir para o estado 4
+    DISP      fazer shift, e ir para o estado 5
+
+    $end      reduzir usando a regra 2 (cmd_list)
+    $end      [reduzir usando a regra 4 (cmd_list)]
+    ELSEIF    reduzir usando a regra 2 (cmd_list)
+    ELSEIF    [reduzir usando a regra 4 (cmd_list)]
+    ELSE      reduzir usando a regra 2 (cmd_list)
+    ELSE      [reduzir usando a regra 4 (cmd_list)]
+    END       reduzir usando a regra 2 (cmd_list)
+    END       [reduzir usando a regra 4 (cmd_list)]
+    $default  reduzir usando a regra 2 (cmd_list)
+
+    cmd_list  ir para o estado 21
+    cmd       ir para o estado 8
+
+
+Estado9
+
+    7 cmd: VARIAVEL IGUAL . expr PTVIRG
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 22
+
+
+Estado10
+
+   15 expr: INT .
+
+    $default  reduzir usando a regra 15 (expr)
+
+
+Estado11
+
+   19 expr: VARIAVEL .
+
+    $default  reduzir usando a regra 19 (expr)
+
+
+Estado12
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   20     | PARENTESQ . expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 23
+
+
+Estado13
+
+   18 expr: VERDADE .
+
+    $default  reduzir usando a regra 18 (expr)
+
+
+Estado14
+
+   17 expr: FALSO .
+
+    $default  reduzir usando a regra 17 (expr)
+
+
+Estado15
+
+   16 expr: INPUT .
+
+    $default  reduzir usando a regra 16 (expr)
+
+
+Estado16
+
+    2 cmd_list: . cmd
+    3         | . cmd cmd_list
+    4         | . %empty  [ELSEIF, ELSE, END]
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    8    | IF expr . cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+    9    | IF expr . cmd_list ELSE cmd_list END
+   10    | . IF expr cmd_list elseif END
+   10    | IF expr . cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   11    | IF expr . cmd_list elseif ELSE cmd_list END
+   12    | . WHILE expr cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    VARIAVEL     fazer shift, e ir para o estado 1
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+    IF           fazer shift, e ir para o estado 2
+    FOR          fazer shift, e ir para o estado 3
+    WHILE        fazer shift, e ir para o estado 4
+    DISP         fazer shift, e ir para o estado 5
+
+    $default  reduzir usando a regra 4 (cmd_list)
+
+    cmd_list  ir para o estado 35
+    cmd       ir para o estado 8
+
+
+Estado17
+
+   13 cmd: FOR expr . DOISPONTOS expr cmd_list END
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    DOISPONTOS   fazer shift, e ir para o estado 36
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+
+Estado18
+
+    2 cmd_list: . cmd
+    3         | . cmd cmd_list
+    4         | . %empty  [END]
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+   10    | . IF expr cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   12    | . WHILE expr cmd_list END
+   12    | WHILE expr . cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    VARIAVEL     fazer shift, e ir para o estado 1
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+    IF           fazer shift, e ir para o estado 2
+    FOR          fazer shift, e ir para o estado 3
+    WHILE        fazer shift, e ir para o estado 4
+    DISP         fazer shift, e ir para o estado 5
+
+    $default  reduzir usando a regra 4 (cmd_list)
+
+    cmd_list  ir para o estado 37
+    cmd       ir para o estado 8
+
+
+Estado19
+
+   14 cmd: DISP PARENTESQ . expr PARENTDIR PTVIRG
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 38
+
+
+Estado20
+
+    0 $accept: program $end .
+
+    $default  aceite
+
+
+Estado21
+
+    3 cmd_list: cmd cmd_list .
+
+    $default  reduzir usando a regra 3 (cmd_list)
+
+
+Estado22
+
+    7 cmd: VARIAVEL IGUAL expr . PTVIRG
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    PTVIRG       fazer shift, e ir para o estado 39
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+
+Estado23
+
+   20 expr: PARENTESQ expr . PARENTDIR
+   21     | expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    PARENTDIR    fazer shift, e ir para o estado 40
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+
+Estado24
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   21     | expr MAIS . expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 41
+
+
+Estado25
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   22     | expr MENOS . expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 42
+
+
+Estado26
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   23     | expr MULT . expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 43
+
+
+Estado27
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   24     | expr DIV . expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 44
+
+
+Estado28
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   25     | expr MAIOR . expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 45
+
+
+Estado29
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   26     | expr MENOR . expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 46
+
+
+Estado30
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   27     | expr MENOR_IGUAL . expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 47
+
+
+Estado31
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   28     | expr MAIOR_IGUAL . expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 48
+
+
+Estado32
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   29     | expr IGUAL_IGUAL . expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 49
+
+
+Estado33
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+   31     | expr DIFERENTE . expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 50
+
+
+Estado34
+
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   30     | expr IGUAL . expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 51
+
+
+Estado35
+
+    5 elseif: . ELSEIF expr cmd_list
+    6       | . ELSEIF expr cmd_list elseif
+    8 cmd: IF expr cmd_list . END
+    9    | IF expr cmd_list . ELSE cmd_list END
+   10    | IF expr cmd_list . elseif END
+   11    | IF expr cmd_list . elseif ELSE cmd_list END
+
+    ELSEIF  fazer shift, e ir para o estado 52
+    ELSE    fazer shift, e ir para o estado 53
+    END     fazer shift, e ir para o estado 54
+
+    elseif  ir para o estado 55
+
+
+Estado36
+
+   13 cmd: FOR expr DOISPONTOS . expr cmd_list END
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 56
+
+
+Estado37
+
+   12 cmd: WHILE expr cmd_list . END
+
+    END  fazer shift, e ir para o estado 57
+
+
+Estado38
+
+   14 cmd: DISP PARENTESQ expr . PARENTDIR PTVIRG
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    PARENTDIR    fazer shift, e ir para o estado 58
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+
+Estado39
+
+    7 cmd: VARIAVEL IGUAL expr PTVIRG .
+
+    $default  reduzir usando a regra 7 (cmd)
+
+
+Estado40
+
+   20 expr: PARENTESQ expr PARENTDIR .
+
+    $default  reduzir usando a regra 20 (expr)
+
+
+Estado41
+
+   21 expr: expr . MAIS expr
+   21     | expr MAIS expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 21 (expr)
+
+    Conflito entre a regra 21 e o token MAIS resolvido como um reduce (%left MAIS).
+    Conflito entre a regra 21 e o token MENOS resolvido como um reduce (%left MENOS).
+    Conflito entre a regra 21 e o token MULT resolvido como um reduce (%left MULT).
+    Conflito entre a regra 21 e o token DIV resolvido como um reduce (%left DIV).
+    Conflito entre a regra 21 e o token MAIOR resolvido como um shift (MAIS < MAIOR).
+    Conflito entre a regra 21 e o token MENOR resolvido como um shift (MAIS < MENOR).
+    Conflito entre a regra 21 e o token MENOR_IGUAL resolvido como um shift (MAIS < MENOR_IGUAL).
+    Conflito entre a regra 21 e o token MAIOR_IGUAL resolvido como um shift (MAIS < MAIOR_IGUAL).
+    Conflito entre a regra 21 e o token IGUAL_IGUAL resolvido como um shift (MAIS < IGUAL_IGUAL).
+    Conflito entre a regra 21 e o token DIFERENTE resolvido como um shift (MAIS < DIFERENTE).
+    Conflito entre a regra 21 e o token IGUAL resolvido como um shift (MAIS < IGUAL).
+
+
+Estado42
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   22     | expr MENOS expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 22 (expr)
+
+    Conflito entre a regra 22 e o token MAIS resolvido como um reduce (%left MAIS).
+    Conflito entre a regra 22 e o token MENOS resolvido como um reduce (%left MENOS).
+    Conflito entre a regra 22 e o token MULT resolvido como um reduce (%left MULT).
+    Conflito entre a regra 22 e o token DIV resolvido como um reduce (%left DIV).
+    Conflito entre a regra 22 e o token MAIOR resolvido como um shift (MENOS < MAIOR).
+    Conflito entre a regra 22 e o token MENOR resolvido como um shift (MENOS < MENOR).
+    Conflito entre a regra 22 e o token MENOR_IGUAL resolvido como um shift (MENOS < MENOR_IGUAL).
+    Conflito entre a regra 22 e o token MAIOR_IGUAL resolvido como um shift (MENOS < MAIOR_IGUAL).
+    Conflito entre a regra 22 e o token IGUAL_IGUAL resolvido como um shift (MENOS < IGUAL_IGUAL).
+    Conflito entre a regra 22 e o token DIFERENTE resolvido como um shift (MENOS < DIFERENTE).
+    Conflito entre a regra 22 e o token IGUAL resolvido como um shift (MENOS < IGUAL).
+
+
+Estado43
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   23     | expr MULT expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 23 (expr)
+
+    Conflito entre a regra 23 e o token MAIS resolvido como um reduce (%left MAIS).
+    Conflito entre a regra 23 e o token MENOS resolvido como um reduce (%left MENOS).
+    Conflito entre a regra 23 e o token MULT resolvido como um reduce (%left MULT).
+    Conflito entre a regra 23 e o token DIV resolvido como um reduce (%left DIV).
+    Conflito entre a regra 23 e o token MAIOR resolvido como um shift (MULT < MAIOR).
+    Conflito entre a regra 23 e o token MENOR resolvido como um shift (MULT < MENOR).
+    Conflito entre a regra 23 e o token MENOR_IGUAL resolvido como um shift (MULT < MENOR_IGUAL).
+    Conflito entre a regra 23 e o token MAIOR_IGUAL resolvido como um shift (MULT < MAIOR_IGUAL).
+    Conflito entre a regra 23 e o token IGUAL_IGUAL resolvido como um shift (MULT < IGUAL_IGUAL).
+    Conflito entre a regra 23 e o token DIFERENTE resolvido como um shift (MULT < DIFERENTE).
+    Conflito entre a regra 23 e o token IGUAL resolvido como um shift (MULT < IGUAL).
+
+
+Estado44
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   24     | expr DIV expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 24 (expr)
+
+    Conflito entre a regra 24 e o token MAIS resolvido como um reduce (%left MAIS).
+    Conflito entre a regra 24 e o token MENOS resolvido como um reduce (%left MENOS).
+    Conflito entre a regra 24 e o token MULT resolvido como um reduce (%left MULT).
+    Conflito entre a regra 24 e o token DIV resolvido como um reduce (%left DIV).
+    Conflito entre a regra 24 e o token MAIOR resolvido como um shift (DIV < MAIOR).
+    Conflito entre a regra 24 e o token MENOR resolvido como um shift (DIV < MENOR).
+    Conflito entre a regra 24 e o token MENOR_IGUAL resolvido como um shift (DIV < MENOR_IGUAL).
+    Conflito entre a regra 24 e o token MAIOR_IGUAL resolvido como um shift (DIV < MAIOR_IGUAL).
+    Conflito entre a regra 24 e o token IGUAL_IGUAL resolvido como um shift (DIV < IGUAL_IGUAL).
+    Conflito entre a regra 24 e o token DIFERENTE resolvido como um shift (DIV < DIFERENTE).
+    Conflito entre a regra 24 e o token IGUAL resolvido como um shift (DIV < IGUAL).
+
+
+Estado45
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   25     | expr MAIOR expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, MAIOR, MENOR, MENOR_IGUAL, MAIOR_IGUAL, IGUAL_IGUAL, DIFERENTE, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    IGUAL  fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 25 (expr)
+
+    Conflito entre a regra 25 e o token MAIS resolvido como um reduce (MAIS < MAIOR).
+    Conflito entre a regra 25 e o token MENOS resolvido como um reduce (MENOS < MAIOR).
+    Conflito entre a regra 25 e o token MULT resolvido como um reduce (MULT < MAIOR).
+    Conflito entre a regra 25 e o token DIV resolvido como um reduce (DIV < MAIOR).
+    Conflito entre a regra 25 e o token MAIOR resolvido como um reduce (%left MAIOR).
+    Conflito entre a regra 25 e o token MENOR resolvido como um reduce (%left MENOR).
+    Conflito entre a regra 25 e o token MENOR_IGUAL resolvido como um reduce (%left MENOR_IGUAL).
+    Conflito entre a regra 25 e o token MAIOR_IGUAL resolvido como um reduce (%left MAIOR_IGUAL).
+    Conflito entre a regra 25 e o token IGUAL_IGUAL resolvido como um reduce (%left IGUAL_IGUAL).
+    Conflito entre a regra 25 e o token DIFERENTE resolvido como um reduce (%left DIFERENTE).
+    Conflito entre a regra 25 e o token IGUAL resolvido como um shift (MAIOR < IGUAL).
+
+
+Estado46
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   26     | expr MENOR expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, MAIOR, MENOR, MENOR_IGUAL, MAIOR_IGUAL, IGUAL_IGUAL, DIFERENTE, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    IGUAL  fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 26 (expr)
+
+    Conflito entre a regra 26 e o token MAIS resolvido como um reduce (MAIS < MENOR).
+    Conflito entre a regra 26 e o token MENOS resolvido como um reduce (MENOS < MENOR).
+    Conflito entre a regra 26 e o token MULT resolvido como um reduce (MULT < MENOR).
+    Conflito entre a regra 26 e o token DIV resolvido como um reduce (DIV < MENOR).
+    Conflito entre a regra 26 e o token MAIOR resolvido como um reduce (%left MAIOR).
+    Conflito entre a regra 26 e o token MENOR resolvido como um reduce (%left MENOR).
+    Conflito entre a regra 26 e o token MENOR_IGUAL resolvido como um reduce (%left MENOR_IGUAL).
+    Conflito entre a regra 26 e o token MAIOR_IGUAL resolvido como um reduce (%left MAIOR_IGUAL).
+    Conflito entre a regra 26 e o token IGUAL_IGUAL resolvido como um reduce (%left IGUAL_IGUAL).
+    Conflito entre a regra 26 e o token DIFERENTE resolvido como um reduce (%left DIFERENTE).
+    Conflito entre a regra 26 e o token IGUAL resolvido como um shift (MENOR < IGUAL).
+
+
+Estado47
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   27     | expr MENOR_IGUAL expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, MAIOR, MENOR, MENOR_IGUAL, MAIOR_IGUAL, IGUAL_IGUAL, DIFERENTE, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    IGUAL  fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 27 (expr)
+
+    Conflito entre a regra 27 e o token MAIS resolvido como um reduce (MAIS < MENOR_IGUAL).
+    Conflito entre a regra 27 e o token MENOS resolvido como um reduce (MENOS < MENOR_IGUAL).
+    Conflito entre a regra 27 e o token MULT resolvido como um reduce (MULT < MENOR_IGUAL).
+    Conflito entre a regra 27 e o token DIV resolvido como um reduce (DIV < MENOR_IGUAL).
+    Conflito entre a regra 27 e o token MAIOR resolvido como um reduce (%left MAIOR).
+    Conflito entre a regra 27 e o token MENOR resolvido como um reduce (%left MENOR).
+    Conflito entre a regra 27 e o token MENOR_IGUAL resolvido como um reduce (%left MENOR_IGUAL).
+    Conflito entre a regra 27 e o token MAIOR_IGUAL resolvido como um reduce (%left MAIOR_IGUAL).
+    Conflito entre a regra 27 e o token IGUAL_IGUAL resolvido como um reduce (%left IGUAL_IGUAL).
+    Conflito entre a regra 27 e o token DIFERENTE resolvido como um reduce (%left DIFERENTE).
+    Conflito entre a regra 27 e o token IGUAL resolvido como um shift (MENOR_IGUAL < IGUAL).
+
+
+Estado48
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   28     | expr MAIOR_IGUAL expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, MAIOR, MENOR, MENOR_IGUAL, MAIOR_IGUAL, IGUAL_IGUAL, DIFERENTE, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    IGUAL  fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 28 (expr)
+
+    Conflito entre a regra 28 e o token MAIS resolvido como um reduce (MAIS < MAIOR_IGUAL).
+    Conflito entre a regra 28 e o token MENOS resolvido como um reduce (MENOS < MAIOR_IGUAL).
+    Conflito entre a regra 28 e o token MULT resolvido como um reduce (MULT < MAIOR_IGUAL).
+    Conflito entre a regra 28 e o token DIV resolvido como um reduce (DIV < MAIOR_IGUAL).
+    Conflito entre a regra 28 e o token MAIOR resolvido como um reduce (%left MAIOR).
+    Conflito entre a regra 28 e o token MENOR resolvido como um reduce (%left MENOR).
+    Conflito entre a regra 28 e o token MENOR_IGUAL resolvido como um reduce (%left MENOR_IGUAL).
+    Conflito entre a regra 28 e o token MAIOR_IGUAL resolvido como um reduce (%left MAIOR_IGUAL).
+    Conflito entre a regra 28 e o token IGUAL_IGUAL resolvido como um reduce (%left IGUAL_IGUAL).
+    Conflito entre a regra 28 e o token DIFERENTE resolvido como um reduce (%left DIFERENTE).
+    Conflito entre a regra 28 e o token IGUAL resolvido como um shift (MAIOR_IGUAL < IGUAL).
+
+
+Estado49
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   29     | expr IGUAL_IGUAL expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, MAIOR, MENOR, MENOR_IGUAL, MAIOR_IGUAL, IGUAL_IGUAL, DIFERENTE, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    IGUAL  fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 29 (expr)
+
+    Conflito entre a regra 29 e o token MAIS resolvido como um reduce (MAIS < IGUAL_IGUAL).
+    Conflito entre a regra 29 e o token MENOS resolvido como um reduce (MENOS < IGUAL_IGUAL).
+    Conflito entre a regra 29 e o token MULT resolvido como um reduce (MULT < IGUAL_IGUAL).
+    Conflito entre a regra 29 e o token DIV resolvido como um reduce (DIV < IGUAL_IGUAL).
+    Conflito entre a regra 29 e o token MAIOR resolvido como um reduce (%left MAIOR).
+    Conflito entre a regra 29 e o token MENOR resolvido como um reduce (%left MENOR).
+    Conflito entre a regra 29 e o token MENOR_IGUAL resolvido como um reduce (%left MENOR_IGUAL).
+    Conflito entre a regra 29 e o token MAIOR_IGUAL resolvido como um reduce (%left MAIOR_IGUAL).
+    Conflito entre a regra 29 e o token IGUAL_IGUAL resolvido como um reduce (%left IGUAL_IGUAL).
+    Conflito entre a regra 29 e o token DIFERENTE resolvido como um reduce (%left DIFERENTE).
+    Conflito entre a regra 29 e o token IGUAL resolvido como um shift (IGUAL_IGUAL < IGUAL).
+
+
+Estado50
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+   31     | expr DIFERENTE expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, MAIOR, MENOR, MENOR_IGUAL, MAIOR_IGUAL, IGUAL_IGUAL, DIFERENTE, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+
+    IGUAL  fazer shift, e ir para o estado 34
+
+    $default  reduzir usando a regra 31 (expr)
+
+    Conflito entre a regra 31 e o token MAIS resolvido como um reduce (MAIS < DIFERENTE).
+    Conflito entre a regra 31 e o token MENOS resolvido como um reduce (MENOS < DIFERENTE).
+    Conflito entre a regra 31 e o token MULT resolvido como um reduce (MULT < DIFERENTE).
+    Conflito entre a regra 31 e o token DIV resolvido como um reduce (DIV < DIFERENTE).
+    Conflito entre a regra 31 e o token MAIOR resolvido como um reduce (%left MAIOR).
+    Conflito entre a regra 31 e o token MENOR resolvido como um reduce (%left MENOR).
+    Conflito entre a regra 31 e o token MENOR_IGUAL resolvido como um reduce (%left MENOR_IGUAL).
+    Conflito entre a regra 31 e o token MAIOR_IGUAL resolvido como um reduce (%left MAIOR_IGUAL).
+    Conflito entre a regra 31 e o token IGUAL_IGUAL resolvido como um reduce (%left IGUAL_IGUAL).
+    Conflito entre a regra 31 e o token DIFERENTE resolvido como um reduce (%left DIFERENTE).
+    Conflito entre a regra 31 e o token IGUAL resolvido como um shift (DIFERENTE < IGUAL).
+
+
+Estado51
+
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   30     | expr IGUAL expr .  [VARIAVEL, PTVIRG, DOISPONTOS, PARENTDIR, MAIS, MENOS, MULT, DIV, MAIOR, MENOR, MENOR_IGUAL, MAIOR_IGUAL, IGUAL_IGUAL, DIFERENTE, IGUAL, IF, ELSEIF, ELSE, END, FOR, WHILE, DISP]
+   31     | expr . DIFERENTE expr
+
+    $default  reduzir usando a regra 30 (expr)
+
+    Conflito entre a regra 30 e o token MAIS resolvido como um reduce (MAIS < IGUAL).
+    Conflito entre a regra 30 e o token MENOS resolvido como um reduce (MENOS < IGUAL).
+    Conflito entre a regra 30 e o token MULT resolvido como um reduce (MULT < IGUAL).
+    Conflito entre a regra 30 e o token DIV resolvido como um reduce (DIV < IGUAL).
+    Conflito entre a regra 30 e o token MAIOR resolvido como um reduce (MAIOR < IGUAL).
+    Conflito entre a regra 30 e o token MENOR resolvido como um reduce (MENOR < IGUAL).
+    Conflito entre a regra 30 e o token MENOR_IGUAL resolvido como um reduce (MENOR_IGUAL < IGUAL).
+    Conflito entre a regra 30 e o token MAIOR_IGUAL resolvido como um reduce (MAIOR_IGUAL < IGUAL).
+    Conflito entre a regra 30 e o token IGUAL_IGUAL resolvido como um reduce (IGUAL_IGUAL < IGUAL).
+    Conflito entre a regra 30 e o token DIFERENTE resolvido como um reduce (DIFERENTE < IGUAL).
+    Conflito entre a regra 30 e o token IGUAL resolvido como um reduce (%left IGUAL).
+
+
+Estado52
+
+    5 elseif: ELSEIF . expr cmd_list
+    6       | ELSEIF . expr cmd_list elseif
+   15 expr: . INT
+   16     | . INPUT
+   17     | . FALSO
+   18     | . VERDADE
+   19     | . VARIAVEL
+   20     | . PARENTESQ expr PARENTDIR
+   21     | . expr MAIS expr
+   22     | . expr MENOS expr
+   23     | . expr MULT expr
+   24     | . expr DIV expr
+   25     | . expr MAIOR expr
+   26     | . expr MENOR expr
+   27     | . expr MENOR_IGUAL expr
+   28     | . expr MAIOR_IGUAL expr
+   29     | . expr IGUAL_IGUAL expr
+   30     | . expr IGUAL expr
+   31     | . expr DIFERENTE expr
+
+    INT        fazer shift, e ir para o estado 10
+    VARIAVEL   fazer shift, e ir para o estado 11
+    PARENTESQ  fazer shift, e ir para o estado 12
+    VERDADE    fazer shift, e ir para o estado 13
+    FALSO      fazer shift, e ir para o estado 14
+    INPUT      fazer shift, e ir para o estado 15
+
+    expr  ir para o estado 59
+
+
+Estado53
+
+    2 cmd_list: . cmd
+    3         | . cmd cmd_list
+    4         | . %empty  [END]
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+    9    | IF expr cmd_list ELSE . cmd_list END
+   10    | . IF expr cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   12    | . WHILE expr cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+
+    VARIAVEL  fazer shift, e ir para o estado 1
+    IF        fazer shift, e ir para o estado 2
+    FOR       fazer shift, e ir para o estado 3
+    WHILE     fazer shift, e ir para o estado 4
+    DISP      fazer shift, e ir para o estado 5
+
+    $default  reduzir usando a regra 4 (cmd_list)
+
+    cmd_list  ir para o estado 60
+    cmd       ir para o estado 8
+
+
+Estado54
+
+    8 cmd: IF expr cmd_list END .
+
+    $default  reduzir usando a regra 8 (cmd)
+
+
+Estado55
+
+   10 cmd: IF expr cmd_list elseif . END
+   11    | IF expr cmd_list elseif . ELSE cmd_list END
+
+    ELSE  fazer shift, e ir para o estado 61
+    END   fazer shift, e ir para o estado 62
+
+
+Estado56
+
+    2 cmd_list: . cmd
+    3         | . cmd cmd_list
+    4         | . %empty  [END]
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+   10    | . IF expr cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   12    | . WHILE expr cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   13    | FOR expr DOISPONTOS expr . cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    VARIAVEL     fazer shift, e ir para o estado 1
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+    IF           fazer shift, e ir para o estado 2
+    FOR          fazer shift, e ir para o estado 3
+    WHILE        fazer shift, e ir para o estado 4
+    DISP         fazer shift, e ir para o estado 5
+
+    $default  reduzir usando a regra 4 (cmd_list)
+
+    cmd_list  ir para o estado 63
+    cmd       ir para o estado 8
+
+
+Estado57
+
+   12 cmd: WHILE expr cmd_list END .
+
+    $default  reduzir usando a regra 12 (cmd)
+
+
+Estado58
+
+   14 cmd: DISP PARENTESQ expr PARENTDIR . PTVIRG
+
+    PTVIRG  fazer shift, e ir para o estado 64
+
+
+Estado59
+
+    2 cmd_list: . cmd
+    3         | . cmd cmd_list
+    4         | . %empty  [ELSEIF, ELSE, END]
+    5 elseif: ELSEIF expr . cmd_list
+    6       | ELSEIF expr . cmd_list elseif
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+   10    | . IF expr cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   12    | . WHILE expr cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+   21 expr: expr . MAIS expr
+   22     | expr . MENOS expr
+   23     | expr . MULT expr
+   24     | expr . DIV expr
+   25     | expr . MAIOR expr
+   26     | expr . MENOR expr
+   27     | expr . MENOR_IGUAL expr
+   28     | expr . MAIOR_IGUAL expr
+   29     | expr . IGUAL_IGUAL expr
+   30     | expr . IGUAL expr
+   31     | expr . DIFERENTE expr
+
+    VARIAVEL     fazer shift, e ir para o estado 1
+    MAIS         fazer shift, e ir para o estado 24
+    MENOS        fazer shift, e ir para o estado 25
+    MULT         fazer shift, e ir para o estado 26
+    DIV          fazer shift, e ir para o estado 27
+    MAIOR        fazer shift, e ir para o estado 28
+    MENOR        fazer shift, e ir para o estado 29
+    MENOR_IGUAL  fazer shift, e ir para o estado 30
+    MAIOR_IGUAL  fazer shift, e ir para o estado 31
+    IGUAL_IGUAL  fazer shift, e ir para o estado 32
+    DIFERENTE    fazer shift, e ir para o estado 33
+    IGUAL        fazer shift, e ir para o estado 34
+    IF           fazer shift, e ir para o estado 2
+    FOR          fazer shift, e ir para o estado 3
+    WHILE        fazer shift, e ir para o estado 4
+    DISP         fazer shift, e ir para o estado 5
+
+    $default  reduzir usando a regra 4 (cmd_list)
+
+    cmd_list  ir para o estado 65
+    cmd       ir para o estado 8
+
+
+Estado60
+
+    9 cmd: IF expr cmd_list ELSE cmd_list . END
+
+    END  fazer shift, e ir para o estado 66
+
+
+Estado61
+
+    2 cmd_list: . cmd
+    3         | . cmd cmd_list
+    4         | . %empty  [END]
+    7 cmd: . VARIAVEL IGUAL expr PTVIRG
+    8    | . IF expr cmd_list END
+    9    | . IF expr cmd_list ELSE cmd_list END
+   10    | . IF expr cmd_list elseif END
+   11    | . IF expr cmd_list elseif ELSE cmd_list END
+   11    | IF expr cmd_list elseif ELSE . cmd_list END
+   12    | . WHILE expr cmd_list END
+   13    | . FOR expr DOISPONTOS expr cmd_list END
+   14    | . DISP PARENTESQ expr PARENTDIR PTVIRG
+
+    VARIAVEL  fazer shift, e ir para o estado 1
+    IF        fazer shift, e ir para o estado 2
+    FOR       fazer shift, e ir para o estado 3
+    WHILE     fazer shift, e ir para o estado 4
+    DISP      fazer shift, e ir para o estado 5
+
+    $default  reduzir usando a regra 4 (cmd_list)
+
+    cmd_list  ir para o estado 67
+    cmd       ir para o estado 8
+
+
+Estado62
+
+   10 cmd: IF expr cmd_list elseif END .
+
+    $default  reduzir usando a regra 10 (cmd)
+
+
+Estado63
+
+   13 cmd: FOR expr DOISPONTOS expr cmd_list . END
+
+    END  fazer shift, e ir para o estado 68
+
+
+Estado64
+
+   14 cmd: DISP PARENTESQ expr PARENTDIR PTVIRG .
+
+    $default  reduzir usando a regra 14 (cmd)
+
+
+Estado65
+
+    5 elseif: . ELSEIF expr cmd_list
+    5       | ELSEIF expr cmd_list .  [ELSE, END]
+    6       | . ELSEIF expr cmd_list elseif
+    6       | ELSEIF expr cmd_list . elseif
+
+    ELSEIF  fazer shift, e ir para o estado 52
+
+    $default  reduzir usando a regra 5 (elseif)
+
+    elseif  ir para o estado 69
+
+
+Estado66
+
+    9 cmd: IF expr cmd_list ELSE cmd_list END .
+
+    $default  reduzir usando a regra 9 (cmd)
+
+
+Estado67
+
+   11 cmd: IF expr cmd_list elseif ELSE cmd_list . END
+
+    END  fazer shift, e ir para o estado 70
+
+
+Estado68
+
+   13 cmd: FOR expr DOISPONTOS expr cmd_list END .
+
+    $default  reduzir usando a regra 13 (cmd)
+
+
+Estado69
+
+    6 elseif: ELSEIF expr cmd_list elseif .
+
+    $default  reduzir usando a regra 6 (elseif)
+
+
+Estado70
+
+   11 cmd: IF expr cmd_list elseif ELSE cmd_list END .
+
+    $default  reduzir usando a regra 11 (cmd)
